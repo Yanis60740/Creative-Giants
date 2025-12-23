@@ -2,6 +2,7 @@
 import SectionLoading from './components/SectionLoading.vue';
 import SectionNav from './components/SectionNav.vue';
 import SectionHero from './components/SectionHero.vue';
+import SectionWhat from './components/SectionWhat.vue';
 import CustomCursor from './components/CustomCursor.vue';
 
 </script>
@@ -10,6 +11,7 @@ import CustomCursor from './components/CustomCursor.vue';
   <SectionLoading />
   <SectionNav />
   <SectionHero />
+  <SectionWhat />
   <CustomCursor />
 </template>
 

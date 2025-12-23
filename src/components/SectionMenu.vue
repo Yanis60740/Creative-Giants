@@ -8,21 +8,43 @@ const closeText = ref(null)
 let tlStart
 let tlReverse
 let isOpen = false
-let scrollY = 0
+
+let scrollLocked = false
+
+const preventScroll = (e) => {
+  if (scrollLocked) {
+    e.preventDefault()
+  }
+}
 
 const lockScroll = () => {
-  scrollY = window.scrollY
-  document.body.style.position = 'fixed'
-  document.body.style.top = `-${scrollY}px`
-  document.body.style.width = '100%'
+  scrollLocked = true
+  document.documentElement.style.overflow = 'hidden'
+
+  window.addEventListener('wheel', preventScroll, { passive: false })
+  window.addEventListener('touchmove', preventScroll, { passive: false })
+  window.addEventListener('keydown', preventKeys, { passive: false })
 }
 
 const unlockScroll = () => {
-  document.body.style.position = ''
-  document.body.style.top = ''
-  document.body.style.width = ''
-  window.scrollTo(0, scrollY)
+  scrollLocked = false
+  document.documentElement.style.overflow = ''
+
+  window.removeEventListener('wheel', preventScroll)
+  window.removeEventListener('touchmove', preventScroll)
+  window.removeEventListener('keydown', preventKeys)
+
+  ScrollTrigger.refresh()
 }
+
+const preventKeys = (e) => {
+  const keys = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown']
+  if (keys.includes(e.code)) {
+    e.preventDefault()
+  }
+}
+
+
 
 onMounted(() => {
   tlStart = gsap.timeline({
@@ -171,7 +193,7 @@ const onLeave = () => {
   pointer-events: auto;
   color: white;
   border-radius: 100vw;
-  padding: 1.6rem 2rem;
+  padding: .75rem 1.5rem;
   display: flex;
   box-shadow: 0 0 0 1px #fff3;
   border: 0;
@@ -186,7 +208,7 @@ const onLeave = () => {
     .animButton {
       font-family: $font;
       font-weight: 400;
-      font-size: 1.9rem;
+      font-size: 1.4em;
     }
   }
 }
@@ -206,7 +228,7 @@ const onLeave = () => {
     grid-template-columns: 1fr 2fr 1fr;
     display: grid;
     box-sizing: border-box;
-    padding: 13rem 3.5rem 3rem 3.5rem;
+    padding: 8rem 2rem 2rem 2rem;
     font-family: $font;
     font-weight: 300;
     color: white;
@@ -233,12 +255,12 @@ const onLeave = () => {
         align-items: flex-start;
 
         &__item {
-          font-size: 8.75rem;
-          margin: 1.6rem 0;
+          font-size: 5.4rem;
+          margin: 1rem 0;
           letter-spacing: -0.04em;
           line-height: .75;
           transition: color 0.3s ease;
-          color: white;
+          color: #fffef7;
           width: 100%;
         }        
       }
@@ -253,8 +275,8 @@ const onLeave = () => {
 .menuDetails {
   font-family: $font;
   font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 2.4rem;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
   p {
     margin: 0;
     padding: 0;

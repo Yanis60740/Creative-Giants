@@ -16,14 +16,14 @@ tl.to(box.value, {
 }, 1)
 .to(loadingBanner.value, {
     height: '70vh',
-    duration: 1.8,
+    duration: 1.2,
     ease: 'power3.out'
 }, '-=0.2')
 .to(svgBox.value, {
     opacity: 1,
     duration: 0.5,
     ease: 'power1.out'
-}, '<1.3')
+}, '<0.5')
 })
 </script>
 
@@ -107,7 +107,7 @@ tl.to(box.value, {
 <style scoped lang="scss">
 .sectionLoading {
   &__box {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

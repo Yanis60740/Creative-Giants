@@ -119,55 +119,55 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2.6rem;
-    padding-left: 3.2rem;
+    padding-top: 1.5rem;
+    padding-left: 2rem;
     padding-right: 2rem;
     box-sizing: border-box;
     font-family: $font;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 1rem;
     z-index: 20;
-  }
-  &__box__logo {
-    grid-column-gap: .63rem;
-    grid-row-gap: .63rem;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-    z-index: 20;
-    text-transform: uppercase;
-    &__icon {
-      background-color: black;
-      border-radius: 100vw;
-      width: 4.3rem;
-      padding: .8rem;
-      color: white;
-      box-shadow: 0 0 0 1px #fff3;
-      &__svg {
-        justify-content: center;
-        align-items: center;
-        display: flex;
+    &__logo {
+      grid-column-gap: .63rem;
+      grid-row-gap: .63rem;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+      z-index: 20;
+      text-transform: uppercase;
+      &__icon {
+        background-color: black;
+        border-radius: 100vw;
+        color: white;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+        width: 2.8rem;
+        height: 2.8rem;
+        padding: .5rem;
+        &__svg {
+          justify-content: center;
+          align-items: center;
+          display: flex;
+        }
       }
-    }
-    &__text {
-      max-width: 27ch;
-      line-height: 1em;
-      .letterWrapper{
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: top;
-        .letter{
+      &__text {
+        max-width: 27ch;
+        line-height: 1;
+        .letterWrapper{
+          overflow: hidden;
           display: inline-block;
-          translate: none;
-          rotate: none;
-          scale: none;
-          will-change: transform, opacity;
-          transform: translate(0px, 0px);
-          opacity: 1;
+          vertical-align: top;
+          .letter{
+            display: inline-block;
+            translate: none;
+            rotate: none;
+            scale: none;
+            will-change: transform, opacity;
+            transform: translate(0px, 0px);
+            opacity: 1;
+          }
         }
       }
     }
   }
-  
 }
 </style>
