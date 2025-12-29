@@ -54,8 +54,8 @@ onMounted(() => {
 
 /* État hover */
 #cursor.active {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 
 </style>

@@ -1,50 +1,42 @@
 <script setup lang="js">
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
+let scrollY = 0
+
+const lockScroll = () => {
+  scrollY = window.scrollY
+
+  // 1️⃣ figer le body EN PREMIER
+  document.body.style.position = 'fixed'
+  document.body.style.top = `-${scrollY}px`
+  document.body.style.width = '100%'
+
+  // 2️⃣ tuer le pin APRÈS (frame suivante)
+  requestAnimationFrame(() => {
+    window.dispatchEvent(new Event('menu:open'))
+  })
+}
+
+const unlockScroll = () => {
+  document.body.style.position = ''
+  document.body.style.top = ''
+  document.body.style.width = ''
+
+  window.scrollTo(0, scrollY)
+
+  requestAnimationFrame(() => {
+    window.dispatchEvent(new Event('menu:close'))
+  })
+}
 
 const sectionMenu = ref(null)
 const menuText = ref(null)
 const closeText = ref(null)
 let tlStart
 let tlReverse
-let isOpen = false
-
-let scrollLocked = false
-
-const preventScroll = (e) => {
-  if (scrollLocked) {
-    e.preventDefault()
-  }
-}
-
-const lockScroll = () => {
-  scrollLocked = true
-  document.documentElement.style.overflow = 'hidden'
-
-  window.addEventListener('wheel', preventScroll, { passive: false })
-  window.addEventListener('touchmove', preventScroll, { passive: false })
-  window.addEventListener('keydown', preventKeys, { passive: false })
-}
-
-const unlockScroll = () => {
-  scrollLocked = false
-  document.documentElement.style.overflow = ''
-
-  window.removeEventListener('wheel', preventScroll)
-  window.removeEventListener('touchmove', preventScroll)
-  window.removeEventListener('keydown', preventKeys)
-
-  ScrollTrigger.refresh()
-}
-
-const preventKeys = (e) => {
-  const keys = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown']
-  if (keys.includes(e.code)) {
-    e.preventDefault()
-  }
-}
-
-
 
 onMounted(() => {
   tlStart = gsap.timeline({
@@ -87,11 +79,9 @@ onMounted(() => {
         duration: 0.5,
         ease: 'power2.inOut'
         }, "<")
-    
-    
 })
 
-
+let isOpen = false
 const onClickMenu = () => {
     if (!isOpen) {
         isOpen = true
@@ -141,6 +131,19 @@ const onLeave = () => {
     overwrite: true
   })
 }
+
+const hover = (e) => {
+  const line = e.currentTarget.querySelector('.underline')
+  gsap.set(line, {xPercent: 0, transformOrigin: 'left center' })
+  gsap.killTweensOf(line)
+  gsap.to(line, { scaleX: 1, xPercent: 0, duration: 0.7, ease: 'power3.inOut' })
+}
+
+const unHover = (e) => {
+  const line = e.currentTarget.querySelector('.underline')
+  gsap.killTweensOf(line)
+  gsap.to(line, { scaleX: 0, xPercent: 100, duration: 0.7, ease: 'power3.inOut' })
+}
 </script>
 
 <template>
@@ -174,8 +177,14 @@ const onLeave = () => {
           </li>
         </ul>
         <div class="menuDetails">
-          <p class="is-clickable">88 London Rd, Brighton BN1 4JF</p>
-          <p class="is-clickable">hello@creativegiants.art</p>
+          <div class="menuDetails__info is-clickable" @mouseenter="hover($event)" @mouseleave="unHover($event)">
+            <p>88 London Rd, Brighton BN1 4JF</p>
+            <span class="underline" ref="underline"></span>
+          </div>
+          <div class="menuDetails__info is-clickable" @mouseenter="hover($event)" @mouseleave="unHover($event)">
+            <p>hello@creativegiants.art</p>
+            <span class="underline" ref="underline"></span>
+          </div>
         </div>
       </div>
       <div class="sectionMenu__box__right">
@@ -276,10 +285,25 @@ const onLeave = () => {
   font-family: $font;
   font-weight: 400;
   font-size: 1.1rem;
-  line-height: 1.8rem;
+  line-height: 1.2rem;
+  row-gap: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  &__info {
+    width: max-content;
+  }
   p {
     margin: 0;
     padding: 0;
   }
+}
+
+.underline {
+  display: block;
+  height: 1px;
+  background-color: #666;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0) translateX(0);
 }
 </style>

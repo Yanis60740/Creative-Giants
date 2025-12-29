@@ -131,8 +131,8 @@ tl.to(box.value, {
       background-color: #fffffc;
       z-index: 3;
       padding-bottom: 4rem;
-      padding-left: 3.2rem;
-      padding-right: 3.2rem;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
       position: relative;
       box-sizing: border-box;
       &__svgWrap {

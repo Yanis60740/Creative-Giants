@@ -19,13 +19,11 @@ export default {
         start: 'top+=150',
         toggleActions: 'play none none reverse',    
         onEnter: () => {
-          console.log('enter')
           this.$el
             .querySelector('.sectionNav__box__logo__text')
             ?.classList.remove('is-clickable')
         },
         onLeaveBack: () => {
-          console.log('leave back')
           this.$el
             .querySelector('.sectionNav__box__logo__text')
             ?.classList.add('is-clickable')
@@ -120,8 +118,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-top: 1.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     box-sizing: border-box;
     font-family: $font;
     font-weight: 400;
