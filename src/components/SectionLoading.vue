@@ -28,7 +28,7 @@ tl.to(box.value, {
 </script>
 
 <template>
-  <div ref="sectionLoading" class="sectionLoading">
+  <section ref="sectionLoading" class="sectionLoading">
     <div ref="box" class="sectionLoading__box"></div>
     <div ref="loadingBanner" class="sectionLoading__loadingBanner">
       <div class="sectionLoading__loadingBanner__svgBox">
@@ -38,6 +38,7 @@ tl.to(box.value, {
             width="100%"
             viewBox="0 0 307 68"
             fill="none"
+            preserveAspectRatio="xMidYMid meet"
             style="opacity: 1"
           >
             <path
@@ -101,7 +102,7 @@ tl.to(box.value, {
       </div>
       <div class="sectionLoading__loadingBanner__blurOverlay"></div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

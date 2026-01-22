@@ -9,6 +9,19 @@
   body {
   -ms-overflow-style: none;  /* IE / Edge legacy */
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Empêche le contenu de bouger quand on cache le scrollbar */
+  scrollbar-gutter: stable;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
 
 body::-webkit-scrollbar {
   display: none;             /* Chrome / Safari */

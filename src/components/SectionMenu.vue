@@ -4,32 +4,12 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
-let scrollY = 0
-
-const lockScroll = () => {
-  scrollY = window.scrollY
-
-  // 1️⃣ figer le body EN PREMIER
-  document.body.style.position = 'fixed'
-  document.body.style.top = `-${scrollY}px`
-  document.body.style.width = '100%'
-
-  // 2️⃣ tuer le pin APRÈS (frame suivante)
-  requestAnimationFrame(() => {
-    window.dispatchEvent(new Event('menu:open'))
-  })
-}
-
-const unlockScroll = () => {
-  document.body.style.position = ''
-  document.body.style.top = ''
-  document.body.style.width = ''
-
-  window.scrollTo(0, scrollY)
-
-  requestAnimationFrame(() => {
-    window.dispatchEvent(new Event('menu:close'))
-  })
+const toggleScroll = (isOpen) => {
+  if (isOpen) {
+    window.lenis?.stop()
+  } else {
+    window.lenis?.start()
+  }
 }
 
 const sectionMenu = ref(null)
@@ -41,7 +21,7 @@ let tlReverse
 onMounted(() => {
   tlStart = gsap.timeline({
     paused: true,
-    onStart: lockScroll,
+    onStart: () => toggleScroll(true),
     })
     tlStart
     .to(sectionMenu.value, {
@@ -61,7 +41,7 @@ onMounted(() => {
         }, "<0.1")
   tlReverse = gsap.timeline({
     paused: true,
-    onStart: unlockScroll,
+    onStart: () => toggleScroll(false),
     })
     tlReverse
     .to(sectionMenu.value, {
@@ -153,7 +133,7 @@ const unHover = (e) => {
       <span ref="closeText" class="animButton">Close</span>
     </div>
   </button>
-  <div ref="sectionMenu" class="sectionMenu">
+  <section ref="sectionMenu" class="sectionMenu">
     <div class="sectionMenu__box">
       <div class="sectionMenu__box__left">
         <div class="sectionMenu__box__left__box">
@@ -191,7 +171,7 @@ const unHover = (e) => {
         
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -222,7 +202,7 @@ const unHover = (e) => {
   }
 }
 .sectionMenu {
-  position: absolute;
+  position: fixed;
   top: -100vh;
   left: 0;
   width: 100%;

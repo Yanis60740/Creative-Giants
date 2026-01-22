@@ -22,4 +22,6 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0)
 
+window.lenis = lenis
+
 app.mount('#app')

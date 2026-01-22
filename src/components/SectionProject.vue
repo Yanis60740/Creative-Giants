@@ -19,10 +19,6 @@ onMounted(() => {
     const totalScrollWidth = track.scrollWidth
     const viewportWidth = window.innerWidth
     const itemWidthDeduction = images[images.length - 1].offsetWidth - (images[images.length - 1].offsetWidth / 2.5);
-    console.log(totalScrollWidth - viewportWidth + itemWidthDeduction, '//');
-    console.log(totalScrollWidth, '//');
-    console.log(images[1].offsetWidth, '//');
-    console.log(images[images.length - 1].offsetWidth - (images[images.length - 1].offsetWidth / 2.5));
 
 
 
@@ -84,7 +80,7 @@ onMounted(() => {
     })
 
     const progressText = document.querySelector(
-    '.sectionProject__container__progressWrapper__progressText p'
+        '.sectionProject__container__progressWrapper__progressText p'
     )
 
     gsap.to(progressText, {
@@ -97,18 +93,69 @@ onMounted(() => {
             end: () => `+=${totalScrollWidth}`,
             scrub: true,
             onUpdate: (self) => {
-            const total = 3
-            const progress = Math.max(1, Math.ceil(self.progress * total))
-            progressText.innerText = `[${progress} / ${total}]`
+                const total = 3
+                const progress = Math.max(1, Math.ceil(self.progress * total))
+                progressText.innerText = `[${progress} / ${total}]`
             }
         }
     })
+
+    const cursor = document.querySelector('.cursorLabel')
+    const items = document.querySelectorAll(
+        '.sectionProject__container__itemWrapper__item__rightBox__wrapper__img__image-wrapper'
+    )
+
+    let mouseX = 0
+    let mouseY = 0
+
+    // Position cible (mise à jour en temps réel)
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+    })
+
+    const cursorX = gsap.quickTo(cursor, "x", {
+        duration: 0.6,
+        ease: "power3.out"
+    })
+
+    const cursorY = gsap.quickTo(cursor, "y", {
+        duration: 0.6,
+        ease: "power3.out"
+    })
+
+    window.addEventListener("mousemove", (e) => {
+        cursorX(e.clientX + 10)
+        cursorY(e.clientY + 40)
+    })
+
+
+    items.forEach(item => {
+        item.addEventListener('pointerenter', () => {
+            gsap.to(cursor, {
+                autoAlpha: 1,
+                scale: 1,
+                duration: 0.25,
+                ease: 'power2.out'
+            })
+        })
+
+        item.addEventListener('pointerleave', () => {
+            gsap.to(cursor, {
+                autoAlpha: 0,
+                scale: 0.8,
+                duration: 0.25,
+                ease: 'power2.out'
+            })
+        })
+    })
+
 
 })
 </script>
 
 <template>
-    <div class="sectionProject">
+    <section class="sectionProject">
         <div class="sectionProject__container">
             <div class="sectionProject__container__itemWrapper">
                 <div v-for="(item, i) in projectItems" :key="i" ref="projectItemsRef"
@@ -126,18 +173,25 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="sectionProject__container__itemWrapper__item__rightBox">
-                        <div class="sectionProject__container__itemWrapper__item__rightBox__img">
-                            <img loading="lazy" :src="item[2]" alt="" class="image-wrapper_image" />
-                        </div>
-                        <div class="sectionProject__container__itemWrapper__item__rightBox__info">
-                            <div class="sectionProject__container__itemWrapper__item__rightBox__info__production">
-                                <p>{{ item[3] }}</p>
-                                <p>{{ item[4] }}</p>
-                                <p>{{ item[5] }}</p>
-                                <p>{{ item[6] }}</p>
+                        <div class="sectionProject__container__itemWrapper__item__rightBox__wrapper">
+                            <div
+                                class="sectionProject__container__itemWrapper__item__rightBox__wrapper__img is-clickable">
+                                <div class="sectionProject__container__itemWrapper__item__rightBox__wrapper__img__image-wrapper">
+                                    <img loading="lazy" :src="item[2]" alt="" class="image-wrapper_image" />
+                                </div>
                             </div>
-                            <div class="sectionProject__container__itemWrapper__item__rightBox__info__text">
-                                <p>{{ item[7] }}</p>
+                            <div class="sectionProject__container__itemWrapper__item__rightBox__wrapper__info">
+                                <div
+                                    class="sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production">
+                                    <p>{{ item[3] }}</p>
+                                    <p>{{ item[4] }}</p>
+                                    <p>{{ item[5] }}</p>
+                                    <p>{{ item[6] }}</p>
+                                </div>
+                                <div
+                                    class="sectionProject__container__itemWrapper__item__rightBox__wrapper__info__text">
+                                    <p>{{ item[7] }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +203,7 @@ onMounted(() => {
                 </div>
                 <div class="sectionProject__container__progressWrapper__progressText">
                     <p></p>
-                    <div class="sectionProject__container__progressWrapper__progressText__viewAll">
+                    <div class="sectionProject__container__progressWrapper__progressText__viewAll is-clickable">
                         <p>View All Projects</p>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="inherit"
                             class="sectionProject__container__progressWrapper__progressText__viewAll__svg">
@@ -161,7 +215,8 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-    </div>
+        <div class="cursorLabel">View Project</div>
+    </section>
 </template>
 
 <style scoped lang="scss">
@@ -189,7 +244,7 @@ onMounted(() => {
                 display: flex;
                 gap: 2rem;
                 position: relative;
-                transform: translateX(7%);
+                transform: none;
 
                 &__leftBox {
                     row-gap: 1.5rem;
@@ -199,7 +254,7 @@ onMounted(() => {
                     mix-blend-mode: difference;
                     width: max-content;
                     max-width: 35rem;
-
+                    pointer-events: none;
                     &__label {
                         &__text {
                             font-family: $font;
@@ -225,47 +280,56 @@ onMounted(() => {
                 }
 
                 &__rightBox {
-                    display: flex;
-                    gap: 2rem;
+                    position: relative;
 
                     // transform: translateX(-24%);
-                    &__img {
-                        width: 38rem;
-                        height: 33rem;
-
-                        img {
-                            width: inherit;
-                            height: inherit;
-                            object-fit: cover;
-                        }
-                    }
-
-                    &__info {
+                    &__wrapper {
                         display: flex;
-                        flex-direction: column;
-                        justify-content: flex-end;
-                        color: white;
-                        font-size: 1.2rem;
-                        line-height: 1.4;
-                        letter-spacing: -0.02em;
-                        font-weight: 400;
-                        font-family: $font;
-                        width: 22rem;
                         gap: 2rem;
 
-                        &__production {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-
-                            p {
-                                text-transform: uppercase;
-                                text-decoration: underline;
+                        &__img {
+                            width: 38rem;
+                            height: 33rem;
+                            // position: relative;
+                            &__image-wrapper {
+                                width: 100%;
+                                height: 100%;
+                                will-change: transform;
+                            }
+                            img {
+                                width: inherit;
+                                height: inherit;
+                                object-fit: cover;
                             }
                         }
 
-                        &__text {
-                            p {}
+                        &__info {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+                            color: white;
+                            font-size: 1.2rem;
+                            line-height: 1.4;
+                            letter-spacing: -0.02em;
+                            font-weight: 400;
+                            font-family: $font;
+                            width: 22rem;
+                            gap: 2rem;
+
+                            &__production {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.5rem;
+
+                                p {
+                                    text-transform: uppercase;
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            &__text {
+                                p {}
+                            }
                         }
                     }
                 }
@@ -311,8 +375,6 @@ onMounted(() => {
                     font-weight: 400;
                     font-size: 0.875rem;
                     text-transform: uppercase;
-                    cursor: pointer;
-
                     &__svg {
                         width: 1rem;
                         height: 1rem;
@@ -321,5 +383,25 @@ onMounted(() => {
             }
         }
     }
+}
+
+.cursorLabel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    //   transform: translate(0%, -100%);
+    opacity: 0;
+    z-index: 9999;
+
+    background: white;
+    color: black;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 999px;
+    font-family: $font;
+
+    will-change: transform;
 }
 </style>

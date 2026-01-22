@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <div class="sectionNav">
+  <section class="sectionNav">
     <div class="sectionNav__box">
         <div class="sectionNav__box__logo">
           <div class="sectionNav__box__logo__icon">
@@ -103,7 +103,7 @@ export default {
         </div>
         <SectionMenu />
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
