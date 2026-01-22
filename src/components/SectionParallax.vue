@@ -465,14 +465,14 @@ onMounted(() => {
     pointer-events: none;
     opacity: 0;
     z-index: 9999;
-    background: white;
+    background: #fffef7;
     color: black;
     padding: 0.4rem 0.6rem;
     font-size: 0.8rem;
     text-transform: uppercase;
     border-radius: 999px;
     font-family: $font;
-
+    border: 1px solid black;
     will-change: transform;
 }
 </style>

@@ -12,10 +12,17 @@ const prevBtn = ref(null);
 const nextBtn = ref(null);
 
 onMounted(() => {
-
-    if (containerRef.value) {
-        console.log("Largeur du container :", containerRef.value.offsetWidth);
-    }
+    gsap.fromTo('.sectionTestimonials__header__title', {
+        yPercent: 160}, {
+        yPercent: 0,
+        duration: 1.4,
+        ease: 'power3.out',
+        stagger: 0.1,
+        scrollTrigger: {
+            trigger: '.sectionTestimonials',
+            start: 'top 85%',
+        }
+    })
 
     startCarousel();
 });
@@ -27,6 +34,7 @@ const ease = "power1.inOut";
 
 
 const next = () => {
+    if (gsap.isTweening(newsContainerRef.value)) return;
     const boxWidth = containerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
     const gap = 40;
 
@@ -48,14 +56,15 @@ const next = () => {
         nbScrolls += 1;
     }
 
-    if (nbScrolls === 2) {
+    if (nbScrolls == 2) {
         prevBtn.value.style.opacity = "1";
-    } else if (nbScrolls === 3) {
+    } else if (nbScrolls == nbItems) {
         nextBtn.value.style.opacity = "0.3";
     }
 };
 
 const prev = () => {
+    if (gsap.isTweening(newsContainerRef.value)) return;
     const boxWidth = containerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
     const gap = 40;
 
@@ -77,9 +86,9 @@ const prev = () => {
         nbScrolls -= 1;
     }
 
-    if (nbScrolls === 2) {
+    if (nbScrolls == nbItems - 1) {
         nextBtn.value.style.opacity = "1";
-    } else if (nbScrolls === 1) {
+    } else if (nbScrolls == 1) {
         prevBtn.value.style.opacity = "0.3";
     }
 };
@@ -177,10 +186,10 @@ const startCarousel = () => {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
+        overflow: hidden;
         &__title {
             font-family: $font;
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1;
             letter-spacing: -.02em;
             text-transform: uppercase;

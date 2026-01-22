@@ -394,7 +394,7 @@ onMounted(() => {
     opacity: 0;
     z-index: 9999;
 
-    background: white;
+    background: #fffef7;
     color: black;
     padding: 0.4rem 0.6rem;
     font-size: 0.8rem;

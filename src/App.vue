@@ -6,6 +6,7 @@ import SectionWhat from './components/SectionWhat.vue';
 import SectionProject from './components/SectionProject.vue';
 import SectionParallax from './components/SectionParallax.vue';
 import SectionTestimonials from './components/SectionTestimonials.vue';
+import SectionNews from './components/SectionNews.vue';
 import CustomCursor from './components/CustomCursor.vue';
 
 </script>
@@ -18,6 +19,7 @@ import CustomCursor from './components/CustomCursor.vue';
   <SectionProject />
   <SectionParallax />
   <SectionTestimonials />
+  <SectionNews />
   <CustomCursor />
 </template>
 
