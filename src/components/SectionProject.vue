@@ -21,8 +21,10 @@ onMounted(() => {
     const itemWidthDeduction = images[images.length - 1].offsetWidth - (images[images.length - 1].offsetWidth / 2.5);
 
 
+    if (window.innerWidth < 1000) {
+        return;
+    }
 
-    // Scroll horizontal principal
     gsap.to(track, {
         x: () => -(totalScrollWidth - viewportWidth + itemWidthDeduction),
         ease: 'none',
@@ -55,13 +57,13 @@ onMounted(() => {
     tl.fromTo(image2,
         { xPercent: -10 },
         { xPercent: -23, ease: 'power1.out' },
-        "<30%" // démarre EN MÊME TEMPS que image1
+        "<30%"
     )
 
     tl.fromTo(image3,
         { xPercent: 0 },
         { xPercent: -13, ease: 'power1.out' },
-        ">" // démarre APRÈS image2
+        ">"
     )
 
     const progressBar = document.querySelector(
@@ -108,7 +110,6 @@ onMounted(() => {
     let mouseX = 0
     let mouseY = 0
 
-    // Position cible (mise à jour en temps réel)
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX
         mouseY = e.clientY
@@ -259,7 +260,7 @@ onMounted(() => {
                         &__text {
                             font-family: $font;
                             font-weight: 400;
-                            font-size: 1rem;
+                            font-size: $fontSize6;
                             color: white;
                             text-transform: uppercase;
                             letter-spacing: -0.02em;
@@ -271,7 +272,7 @@ onMounted(() => {
                         &__text {
                             font-family: $font;
                             font-weight: 300;
-                            font-size: 6rem;
+                            font-size: $fontSize1;
                             color: white;
                             letter-spacing: -0.04rem;
                             line-height: 1;
@@ -281,8 +282,6 @@ onMounted(() => {
 
                 &__rightBox {
                     position: relative;
-
-                    // transform: translateX(-24%);
                     &__wrapper {
                         display: flex;
                         gap: 2rem;
@@ -290,7 +289,6 @@ onMounted(() => {
                         &__img {
                             width: 38rem;
                             height: 33rem;
-                            // position: relative;
                             &__image-wrapper {
                                 width: 100%;
                                 height: 100%;
@@ -308,7 +306,7 @@ onMounted(() => {
                             flex-direction: column;
                             justify-content: flex-end;
                             color: white;
-                            font-size: 1.2rem;
+                            font-size: $fontSize5;
                             line-height: 1.4;
                             letter-spacing: -0.02em;
                             font-weight: 400;
@@ -343,7 +341,6 @@ onMounted(() => {
             flex-direction: column;
 
             &__progressBar {
-                // width: 80%;
                 height: 1px;
                 background-color: #666;
 
@@ -362,7 +359,7 @@ onMounted(() => {
                 p {
                     font-family: $font;
                     font-weight: 400;
-                    font-size: 1rem;
+                    font-size: $fontSize6;
                     margin: 0;
                     padding: 0;
                 }
@@ -373,7 +370,7 @@ onMounted(() => {
                     gap: 0.5rem;
                     font-family: $font;
                     font-weight: 400;
-                    font-size: 0.875rem;
+                    font-size: $fontSize7;
                     text-transform: uppercase;
                     &__svg {
                         width: 1rem;
@@ -390,14 +387,13 @@ onMounted(() => {
     top: 0;
     left: 0;
     pointer-events: none;
-    //   transform: translate(0%, -100%);
     opacity: 0;
     z-index: 9999;
 
     background: #fffef7;
     color: black;
     padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
+    font-size: $fontSize7;
     text-transform: uppercase;
     border-radius: 999px;
     font-family: $font;

@@ -1,5 +1,5 @@
 <script lang="js" setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
@@ -150,7 +150,7 @@ onMounted(() => {
     background-color: #fffef7;
     position: relative;
     font-family: $font;
-    padding: 8rem 0 7rem 2.5rem;
+    padding: 8rem 2.5rem 7rem 2.5rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -161,7 +161,7 @@ onMounted(() => {
         flex-direction: column;
         width: max-content;
         &__box {
-            font-size: 1rem;
+            font-size: $fontSize6;
             font-weight: 400;
             text-transform: uppercase;
             overflow: hidden;
@@ -170,7 +170,7 @@ onMounted(() => {
             }
         }
         &__text {
-            font-size: 4.6rem;
+            font-size: $fontSize3;
             font-weight: 300;
             letter-spacing: -.04em;
             .line {
@@ -196,7 +196,7 @@ onMounted(() => {
             row-gap: 3.5rem;
             &__text {
                 color: #666;
-                font-size: 1.225rem;
+                font-size: $fontSize5;
                 font-weight: 300;
                 letter-spacing: -0.02rem;
                 .line {
@@ -223,14 +223,14 @@ onMounted(() => {
                             height: 3rem;
                         }
                         & .number {
-                            font-size: 3.475rem;
+                            font-size: $fontSize4;
                             font-weight: 300;
                             letter-spacing: -0.04em;
                         }
                     }
                     & .label {
                         font-weight: 300;
-                        font-size: 1.1rem;
+                        font-size: $fontSize6;
                         line-height: 1.4;
                         letter-spacing: -0.02em;
                     }

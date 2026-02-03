@@ -1,30 +1,42 @@
 <script setup lang="js">
-import { ref, onMounted } from 'vue'
-import gsap from 'gsap'
+import { ref, onMounted } from "vue";
+import gsap from "gsap";
 
-const box = ref(null)
-const loadingBanner = ref(null)
-const svgBox = ref(null)
+const box = ref(null);
+const loadingBanner = ref(null);
+const svgBox = ref(null);
 
 onMounted(() => {
-const tl = gsap.timeline()
+  const tl = gsap.timeline();
 
-tl.to(box.value, {
-    height: '0vh',
-    duration: 0.8,
-    ease: 'power3.inOut'
-}, 1)
-.to(loadingBanner.value, {
-    height: '70vh',
-    duration: 1.2,
-    ease: 'power3.out'
-}, '-=0.2')
-.to(svgBox.value, {
-    opacity: 1,
-    duration: 0.5,
-    ease: 'power1.out'
-}, '<0.5')
-})
+  tl.to(
+    box.value,
+    {
+      height: "0vh",
+      duration: 0.8,
+      ease: "power3.inOut",
+    },
+    1,
+  )
+    .to(
+      loadingBanner.value,
+      {
+        height: "70vh",
+        duration: 1.2,
+        ease: "power3.out",
+      },
+      "-=0.2",
+    )
+    .to(
+      svgBox.value,
+      {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      },
+      "<0.5",
+    );
+});
 </script>
 
 <template>
@@ -32,7 +44,10 @@ tl.to(box.value, {
     <div ref="box" class="sectionLoading__box"></div>
     <div ref="loadingBanner" class="sectionLoading__loadingBanner">
       <div class="sectionLoading__loadingBanner__svgBox">
-        <div ref="svgBox" class="sectionLoading__loadingBanner__svgBox__svgWrap">
+        <div
+          ref="svgBox"
+          class="sectionLoading__loadingBanner__svgBox__svgWrap"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
@@ -138,7 +153,7 @@ tl.to(box.value, {
       box-sizing: border-box;
       &__svgWrap {
         width: 100%;
-        opacity:0;
+        opacity: 0;
       }
     }
     &__blurOverlay {

@@ -1,20 +1,22 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: none;
-  }
-  body {
-  -ms-overflow-style: none;  /* IE / Edge legacy */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
 }
-*, *::before, *::after {
+body {
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+}
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
-  /* Empêche le contenu de bouger quand on cache le scrollbar */
   scrollbar-gutter: stable;
 }
 
@@ -24,26 +26,26 @@ html {
 }
 
 body::-webkit-scrollbar {
-  display: none;             /* Chrome / Safari */
+  display: none;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
 
-  html.lenis, html.lenis body {
-    height: auto;
-  }
-  
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-  
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-  
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
-  
-  .lenis.lenis-smooth iframe {
-    pointer-events: none;
-  }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

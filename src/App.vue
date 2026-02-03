@@ -1,14 +1,15 @@
 <script setup>
-import SectionLoading from './components/SectionLoading.vue';
-import SectionNav from './components/SectionNav.vue';
-import SectionHero from './components/SectionHero.vue';
-import SectionWhat from './components/SectionWhat.vue';
-import SectionProject from './components/SectionProject.vue';
-import SectionParallax from './components/SectionParallax.vue';
-import SectionTestimonials from './components/SectionTestimonials.vue';
-import SectionNews from './components/SectionNews.vue';
-import CustomCursor from './components/CustomCursor.vue';
-
+import SectionLoading from "./components/SectionLoading.vue";
+import SectionNav from "./components/SectionNav.vue";
+import SectionHero from "./components/SectionHero.vue";
+import SectionWhat from "./components/SectionWhat.vue";
+import SectionProject from "./components/SectionProject.vue";
+import SectionParallax from "./components/SectionParallax.vue";
+import SectionTestimonials from "./components/SectionTestimonials.vue";
+import SectionNews from "./components/SectionNews.vue";
+import SectionContact from "./components/SectionContact.vue";
+import SectionFooter from "./components/SectionFooter.vue";
+import CustomCursor from "./components/CustomCursor.vue";
 </script>
 
 <template>
@@ -20,10 +21,232 @@ import CustomCursor from './components/CustomCursor.vue';
   <SectionParallax />
   <SectionTestimonials />
   <SectionNews />
+  <SectionContact />
+  <SectionFooter />
   <CustomCursor />
 </template>
 
 <style>
 @import "css/global.scss";
-  
+
+@media screen and (max-width: 1200px) {
+  .sectionLoading__loadingBanner {
+    height: 55vh !important;
+  }
+  .sectionWhat__top__text {
+    font-size: 3.5rem !important;
+  }
+  .svgBox {
+    width: 2.7rem !important;
+    height: 2.7rem !important;
+  }
+  .number {
+    font-size: 3.5rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
+    width: 28rem !important;
+    height: 37rem !important;
+  }
+  .sectionProject {
+    padding-left: 140px !important;
+  }
+  .sectionProject__container__itemWrapper__item__leftBox {
+    max-width: 19rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__leftBox__title__text {
+    font-size: 5rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
+    width: 45% !important;
+    font-size: 1rem !important;
+  }
+  .sectionTestimonials__content__box__text {
+    grid-row-gap: 1rem !important;
+  }
+  .sectionTestimonials__content__box__text__quote {
+    font-size: 3rem !important;
+  }
+  .sectionTestimonials__content__box__svg {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+  .sectionNews__header__boxTitle__title {
+    font-size: 4.5rem !important;
+  }
+  .sectionContact__box {
+    column-gap: 2rem !important;
+  }
+  .sectionContact__box__left__title {
+    font-size: 4.5rem !important;
+  }
+  .formGroup input::placeholder {
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  /* Loading */
+  .sectionLoading__loadingBanner {
+    height: 40vh !important;
+  }
+  .sectionLoading__loadingBanner__svgBox {
+    padding-bottom: 2rem !important;
+  }
+  /* Nav */
+  .sectionNav__box__logo__icon {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  /* Menu */
+  .button {
+    padding: 0.55rem 1rem !important;
+  }
+  .animButton {
+    font-size: 1.1rem !important;
+  }
+  .sectionMenu__box__top {
+    align-items: flex-start !important;
+  }
+  .sectionMenu__box__top__list__item {
+    font-size: 3.5rem !important;
+  }
+  .sectionMenu__box__bottom__box {
+    flex-direction: row-reverse !important;
+  }
+  .sectionMenu__box__right {
+    display: none !important;
+  }
+  /* Hero */
+  .sectionHero__subtitle__textWrapper__text__bottom {
+    font-size: 2rem !important;
+  }
+  /* What */
+  .sectionWhat__top__text {
+    font-size: 2.5rem !important;
+  }
+  .line {
+    line-height: 1.2 !important;
+    padding-bottom: 0 !important;
+  }
+  .sectionWhat__bottom {
+        padding-right: 0 !important;
+padding-left: 0 !important;
+  }
+  .sectionWhat__bottom__box__text {
+    font-size: 1rem !important;
+  }
+  .svgBox {
+    width: 2.7rem !important;
+    height: 2.7rem !important;
+  }
+  .number {
+    font-size: 3rem !important;
+  }
+  /* Project */
+  .sectionProject {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+        height: max-content !important;
+  }
+  .sectionProject__container__itemWrapper{
+    flex-direction: column !important;
+  }
+  .sectionProject__container__itemWrapper__item{
+    flex-direction: column !important;
+  } 
+  .sectionProject__container__itemWrapper__item__leftBox {
+    max-width: max-content !important;
+  }
+  .sectionProject__container__itemWrapper__item__leftBox__title__text {
+    font-size: 3.5rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox {
+    transform: none !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper {
+        flex-direction: column-reverse !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
+    width: 100% !important;
+    height: 46rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
+    width: max-content !important;
+        flex-direction: column-reverse !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production{
+        flex-direction: row !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__text{
+        width: 65% !important;
+  }
+  .sectionProject__container__progressWrapper {
+    display: none !important;
+  }
+  /* Parallax */
+  .sectionParallax__wrapper__boxTitle__sticky__wrapper__title{
+        font-size: 4rem !important;
+    line-height: 1.2 !important;
+  }
+  /* Testimonials */
+  .sectionTestimonials__content__box{
+        width: 85%  !important;
+        grid-column-gap: 3rem !important;
+  }
+  .sectionTestimonials__content__box__text__quote {
+    font-size: 1.7rem !important;
+  }
+  .sectionTestimonials__content__box__svg {
+    width: 3rem !important;
+        height: 3rem !important;
+  }
+  /* News */
+  .sectionNews__header__boxTitle__title {
+    font-size: 3.5rem !important;
+  }
+  .sectionNews__content__box {
+        width: 48% !important;
+  }
+  .sectionNews__content__box__text__quote {
+    font-size: 0.9rem !important;
+  }
+  /* Contact */
+  .sectionContact__box {
+    flex-direction: column !important;
+    row-gap: 3rem !important;
+  }
+  .sectionContact__box__left__title {
+    font-size: 3.5rem !important;
+  }
+  .submit-btn {
+                padding: 0.18rem 0rem !important;
+        padding-left: 1rem !important;
+        width: 12rem !important;
+  }
+  .submit-btn__wrapper{
+        padding-left: 1.2rem  !important;
+  }
+  .submit-btn__wrapper__circle {
+        padding: 0.68rem !important;
+  }
+  /* Footer */
+  .sectionFooter__box__top__left__content__title__icon{
+        flex-shrink: 0 !important;
+        width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  .sectionFooter__box__top__left__content__title p{
+        font-size: 0.9rem !important;
+  }
+  .sectionFooter__box__top__right__text__title{
+        font-size: 1.5rem !important;
+  }
+  .sectionFooter__box__top__left__info__text p{
+        font-size: 1rem !important;
+  }
+  .sectionFooter__box__top__right__legal__text{
+        font-size: 0.9rem !important;
+  }
+
+}
 </style>

@@ -47,7 +47,6 @@ onMounted(() => {
     let mouseX = 0
     let mouseY = 0
 
-    // Position cible (mise à jour en temps réel)
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX
         mouseY = e.clientY
@@ -89,7 +88,6 @@ onMounted(() => {
     })
 });
 
-const nbItems = newsItems.length;
 let nbScrolls = 1;
 const duration = 0.5;
 const ease = "power1.inOut";
@@ -202,7 +200,6 @@ const prev = () => {
                 </div>
         </div>
     </div>
-    <div class="newsLabel">Read article</div>
 </section>
 </template>
 
@@ -229,7 +226,7 @@ const prev = () => {
             overflow: hidden;
             &__wrapper{
                 font-family: $font;
-                font-size: 1.1rem;
+                font-size: $fontSize6;
                 line-height: 1;
                 letter-spacing: -.02em;
                 text-transform: uppercase;
@@ -245,7 +242,7 @@ const prev = () => {
             overflow: hidden;
             &__title {
                 font-family: $font;
-                font-size: 5.25rem;
+                font-size: $fontSize2;
                 font-weight: 300;
                 letter-spacing: -.04em;
             }
@@ -292,8 +289,8 @@ const prev = () => {
                 display: flex;
                 &__title {
                     font-family: $font;
-                    font-size: 1.45rem;
-                    font-weight: 300;
+                    font-size: $fontSize5;
+                    font-weight: 400;
                     letter-spacing: -.04em;
                     line-height: 1.4;
                 }
@@ -301,13 +298,13 @@ const prev = () => {
                 &__quote {
                     color: #666;
                     font-family: $font;
-                    font-size: .975rem;
+                    font-size: $fontSize6;
                 }
             }
         }
         &__box:hover {
             .sectionNews__content__box__image img {
-                transform: scale(1.05); // Zoom de 10%
+                transform: scale(1.05);
             }
         }
     }
@@ -338,7 +335,7 @@ const prev = () => {
     background: #fffef7;
     color: black;
     padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
+    font-size: $fontSize7;
     text-transform: uppercase;
     border-radius: 999px;
     font-family: $font;

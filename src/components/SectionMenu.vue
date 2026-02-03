@@ -1,129 +1,146 @@
 <script setup lang="js">
-import { ref, onMounted } from 'vue'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
+import { ref, onMounted } from "vue";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const toggleScroll = (isOpen) => {
   if (isOpen) {
-    window.lenis?.stop()
+    window.lenis?.stop();
   } else {
-    window.lenis?.start()
+    window.lenis?.start();
   }
-}
+};
 
-const sectionMenu = ref(null)
-const menuText = ref(null)
-const closeText = ref(null)
-let tlStart
-let tlReverse
+const sectionMenu = ref(null);
+const menuText = ref(null);
+const closeText = ref(null);
+let tlStart;
+let tlReverse;
 
 onMounted(() => {
   tlStart = gsap.timeline({
     paused: true,
     onStart: () => toggleScroll(true),
-    })
-    tlStart
+  });
+  tlStart
     .to(sectionMenu.value, {
-        top: '0vh',
-        duration: 0.9,
-        ease: 'power2.inOut'
-        })
-    .to(menuText.value, {
+      top: "0vh",
+      duration: 0.9,
+      ease: "power2.inOut",
+    })
+    .to(
+      menuText.value,
+      {
         yPercent: -100,
         duration: 0.5,
-        ease: 'power2.inOut'
-        }, "<")
-    .to(closeText.value, {
+        ease: "power2.inOut",
+      },
+      "<",
+    )
+    .to(
+      closeText.value,
+      {
         yPercent: -100,
         duration: 0.5,
-        ease: 'power2.inOut'
-        }, "<0.1")
+        ease: "power2.inOut",
+      },
+      "<0.1",
+    );
   tlReverse = gsap.timeline({
     paused: true,
     onStart: () => toggleScroll(false),
-    })
-    tlReverse
+  });
+  tlReverse
     .to(sectionMenu.value, {
-        top: '-100vh',
-        duration: 0.9,
-        ease: 'power2.inOut'
-        })
-    .to(menuText.value, {
+      top: "-100vh",
+      duration: 0.9,
+      ease: "power2.inOut",
+    })
+    .to(
+      menuText.value,
+      {
         yPercent: 0,
         duration: 0.5,
-        ease: 'power2.inOut'
-        }, "<")
-    .to(closeText.value, {
+        ease: "power2.inOut",
+      },
+      "<",
+    )
+    .to(
+      closeText.value,
+      {
         yPercent: 0,
         duration: 0.5,
-        ease: 'power2.inOut'
-        }, "<")
-})
+        ease: "power2.inOut",
+      },
+      "<",
+    );
+});
 
-let isOpen = false
+let isOpen = false;
 const onClickMenu = () => {
-    if (!isOpen) {
-        isOpen = true
-        tlStart.restart()
-        return
-    }else {
-        isOpen = false
-        tlReverse.restart()
-        return
-    }
-}
+  if (!isOpen) {
+    isOpen = true;
+    tlStart.restart();
+    return;
+  } else {
+    isOpen = false;
+    tlReverse.restart();
+    return;
+  }
+};
 
-const menuItems = [
-  'Home',
-  'Projects',
-  'Process',
-  'Latest News',
-  'Contact'
-]
+const menuItems = ["Home", "Projects", "Process", "Latest News", "Contact"];
 
-const menuItemsRef = ref([])
+const menuItemsRef = ref([]);
 
 const onEnter = (index) => {
-  // Tous les items deviennent gris
   gsap.to(menuItemsRef.value, {
-    color: '#666',
+    color: "#666",
     duration: 0.1,
-    ease: 'power2.out',
-    overwrite: true
-  })
+    ease: "power2.out",
+    overwrite: true,
+  });
 
-  // Celui hover redevient blanc
   gsap.to(menuItemsRef.value[index], {
-    color: '#fff',
+    color: "#fff",
     duration: 0.1,
-    ease: 'power2.out',
-    overwrite: true
-  })
-}
+    ease: "power2.out",
+    overwrite: true,
+  });
+};
 
 const onLeave = () => {
-  // Tout redevient blanc
   gsap.to(menuItemsRef.value, {
-    color: '#fff',
+    color: "#fff",
     duration: 0.1,
-    ease: 'power2.out',
-    overwrite: true
-  })
-}
+    ease: "power2.out",
+    overwrite: true,
+  });
+};
 
 const hover = (e) => {
-  const line = e.currentTarget.querySelector('.underline')
-  gsap.set(line, {xPercent: 0, transformOrigin: 'left center' })
-  gsap.killTweensOf(line)
-  gsap.to(line, { scaleX: 1, xPercent: 0, duration: 0.7, ease: 'power3.inOut' })
-}
+  const line = e.currentTarget.querySelector(".underline");
+  gsap.set(line, { xPercent: 0, transformOrigin: "bottom top" });
+  gsap.killTweensOf(line);
+  gsap.to(line, {
+    scaleX: 1,
+    xPercent: 0,
+    duration: 0.7,
+    ease: "power3.inOut",
+  });
+};
 
 const unHover = (e) => {
-  const line = e.currentTarget.querySelector('.underline')
-  gsap.killTweensOf(line)
-  gsap.to(line, { scaleX: 0, xPercent: 100, duration: 0.7, ease: 'power3.inOut' })
-}
+  const line = e.currentTarget.querySelector(".underline");
+  gsap.killTweensOf(line);
+  gsap.to(line, {
+    scaleX: 0,
+    xPercent: 100,
+    duration: 0.7,
+    ease: "power3.inOut",
+  });
+};
 </script>
 
 <template>
@@ -135,40 +152,46 @@ const unHover = (e) => {
   </button>
   <section ref="sectionMenu" class="sectionMenu">
     <div class="sectionMenu__box">
-      <div class="sectionMenu__box__left">
-        <div class="sectionMenu__box__left__box">
-          <div class="menuDetails">
-            <p>©2025</p>
-            <p>Privacy Policy | Cookies</p>
-          </div>
-        </div>
-      </div>
-      <div class="sectionMenu__box__center">
-        <ul class="sectionMenu__box__center__list">
+      <div class="sectionMenu__box__top">
+        <ul class="sectionMenu__box__top__list">
           <li
             v-for="(item, i) in menuItems"
             :key="i"
             ref="menuItemsRef"
-            class="sectionMenu__box__center__list__item is-clickable"
+            class="sectionMenu__box__top__list__item is-clickable"
             @mouseenter="onEnter(i)"
             @mouseleave="onLeave"
           >
             {{ item }}
           </li>
         </ul>
-        <div class="menuDetails">
-          <div class="menuDetails__info is-clickable" @mouseenter="hover($event)" @mouseleave="unHover($event)">
-            <p>88 London Rd, Brighton BN1 4JF</p>
-            <span class="underline" ref="underline"></span>
-          </div>
-          <div class="menuDetails__info is-clickable" @mouseenter="hover($event)" @mouseleave="unHover($event)">
-            <p>hello@creativegiants.art</p>
-            <span class="underline" ref="underline"></span>
-          </div>
-        </div>
       </div>
-      <div class="sectionMenu__box__right">
-        
+      <div class="sectionMenu__box__bottom">
+        <div class="sectionMenu__box__bottom__box">
+          <div class="menuDetails">
+            <p>©2025</p>
+            <p>Privacy Policy | Cookies</p>
+          </div>
+          <div class="menuDetails">
+            <div
+              class="menuDetails__info is-clickable"
+              @mouseenter="hover($event)"
+              @mouseleave="unHover($event)"
+            >
+              <p>88 London Rd, Brighton BN1 4JF</p>
+              <span class="underline" ref="underline"></span>
+            </div>
+            <div
+              class="menuDetails__info is-clickable"
+              @mouseenter="hover($event)"
+              @mouseleave="unHover($event)"
+            >
+              <p>hello@creativegiants.art</p>
+              <span class="underline" ref="underline"></span>
+            </div>
+          </div>
+          <div class="sectionMenu__box__right"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -182,7 +205,7 @@ const unHover = (e) => {
   pointer-events: auto;
   color: white;
   border-radius: 100vw;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   box-shadow: 0 0 0 1px #fff3;
   border: 0;
@@ -196,15 +219,15 @@ const unHover = (e) => {
     line-height: 28px;
     .animButton {
       font-family: $font;
-      font-weight: 400;
-      font-size: 1.4em;
+      font-weight: 300;
+      font-size: $fontSize5;
     }
   }
 }
 .sectionMenu {
   position: fixed;
   top: -100vh;
-  left: 0;
+  bottom: 0;
   width: 100%;
   height: 100vh;
   background: black;
@@ -213,26 +236,31 @@ const unHover = (e) => {
   &__box {
     width: 100%;
     height: 100%;
-    grid-column-gap: .75rem;
-    grid-template-columns: 1fr 2fr 1fr;
-    display: grid;
+    grid-column-gap: 0.75rem;
+    // grid-template-columns: 1fr 2fr 1fr;
+        display: flex;
+        flex-direction: column;
+            justify-content: space-between;
     box-sizing: border-box;
-    padding: 8rem 2rem 2rem 2rem;
+    padding: 8rem 2.5rem 2rem 2.5rem;
     font-family: $font;
     font-weight: 300;
     color: white;
-    &__left, &__center, &__right {
-      height: 100%;
+    &__bottom,
+    &__top,
+    &__right {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
     }
-    &__left {
-      align-items: flex-end;
+    &__bottom {
+
       &__box {
-        display: flex;
+            display: flex;
+    justify-content: space-between;
+    width: 100%;
       }
     }
-    &__center {
+    &__top {
       flex-direction: column;
       justify-content: space-between;
       &__list {
@@ -242,16 +270,16 @@ const unHover = (e) => {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
+        width: max-content;
         &__item {
-          font-size: 5.4rem;
+          font-size: $fontSize2;
           margin: 1rem 0;
           letter-spacing: -0.04em;
-          line-height: .75;
+          line-height: 0.75;
           transition: color 0.3s ease;
           color: #fffef7;
           width: 100%;
-        }        
+        }
       }
     }
     &__right {
@@ -264,7 +292,7 @@ const unHover = (e) => {
 .menuDetails {
   font-family: $font;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: $fontSize6;
   line-height: 1.2rem;
   row-gap: 0.4rem;
   display: flex;
@@ -283,7 +311,7 @@ const unHover = (e) => {
   height: 1px;
   background-color: #666;
   width: 100%;
-  transform-origin: left;
+  transform-origin: bottom;
   transform: scaleX(0) translateX(0);
 }
 </style>

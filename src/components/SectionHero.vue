@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted} from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -70,7 +70,6 @@ onMounted(() => {
     }
 
     &__subtitle {
-        // height: 100%;
         z-index: 10;
         position: relative;
         .pin-wrapper {
@@ -91,14 +90,14 @@ onMounted(() => {
                 padding: 0 0 2rem 2.5rem;
 
                 &__top {
-                    font-size: 1rem;
+                    font-size: $fontSize6;
                     font-weight: 400;
                     text-transform: uppercase;
                     letter-spacing: -.02rem;
                 }
 
                 &__bottom {
-                    font-size: 3.6rem;
+                    font-size: $fontSize4;
                     font-weight: 300;
                     letter-spacing: -.04rem;
                 }

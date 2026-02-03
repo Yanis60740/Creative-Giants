@@ -2,7 +2,7 @@
 import { gsap } from 'gsap';
 import { ref, onMounted } from 'vue';
 
-const containerRef = ref(null);
+const testimonialsContainerRef = ref(null);
 const testimonialsItems = [
     ["Working with this team of brilliant, problem solving, passionate, agile Ninjas is such a joy. Their creative ambition & desire to help bring even the most eye watering & challenging projects to life is second to none.", "Nikki Cramphorn", "Adam&eveDDB"],
     ["Not content with executing whatever you ask of them to the highest standard, they consistently improve and develop concepts, taking them in exciting new directions I could have never foreseen.", "John Wildes", "Edelman"],
@@ -34,13 +34,13 @@ const ease = "power1.inOut";
 
 
 const next = () => {
-    if (gsap.isTweening(newsContainerRef.value)) return;
-    const boxWidth = containerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
+    if (gsap.isTweening(testimonialsContainerRef.value)) return;
+    const boxWidth = testimonialsContainerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
     const gap = 40;
 
     if (nbScrolls == nbItems - 1){
         const boxWidth2 = boxWidth - (window.innerWidth - boxWidth - gap * 2);
-        gsap.to(containerRef.value, {
+        gsap.to(testimonialsContainerRef.value, {
             x: `-=${boxWidth2 + gap}`,
             duration: duration,
             ease: ease
@@ -48,7 +48,7 @@ const next = () => {
         nbScrolls += 1;
     }
     else if (nbScrolls < nbItems){
-        gsap.to(containerRef.value, {
+        gsap.to(testimonialsContainerRef.value, {
             x: `-=${boxWidth + gap}`,
             duration: duration,
             ease: ease
@@ -64,13 +64,13 @@ const next = () => {
 };
 
 const prev = () => {
-    if (gsap.isTweening(newsContainerRef.value)) return;
-    const boxWidth = containerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
+    if (gsap.isTweening(testimonialsContainerRef.value)) return;
+    const boxWidth = testimonialsContainerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
     const gap = 40;
 
     if (nbScrolls == nbItems){
         const boxWidth2 = boxWidth - (window.innerWidth - boxWidth - gap * 2);
-        gsap.to(containerRef.value, {
+        gsap.to(testimonialsContainerRef.value, {
             x: `+=${boxWidth2 + gap}`,
             duration: duration,
             ease: ease
@@ -78,7 +78,7 @@ const prev = () => {
         nbScrolls -= 1;
     }
     else if (nbScrolls > 1){
-        gsap.to(containerRef.value, {
+        gsap.to(testimonialsContainerRef.value, {
             x: `+=${boxWidth + gap}`,
             duration: duration,
             ease: ease
@@ -134,7 +134,7 @@ const startCarousel = () => {
                 </div>
             </div>
         </div>
-        <div class ="sectionTestimonials__content" ref="containerRef">
+        <div class ="sectionTestimonials__content" ref="testimonialsContainerRef">
             <div v-for="(item, i) in testimonialsItems" :key="i" 
                     class="sectionTestimonials__content__box">
                     <div class="sectionTestimonials__content__box__text">
@@ -189,7 +189,7 @@ const startCarousel = () => {
         overflow: hidden;
         &__title {
             font-family: $font;
-            font-size: 1.1rem;
+            font-size: $fontSize6;
             line-height: 1;
             letter-spacing: -.02em;
             text-transform: uppercase;
@@ -230,14 +230,14 @@ const startCarousel = () => {
                 flex-direction: column;
                 grid-row-gap: 4rem;
                 &__quote {
-                    font-size: 3.925rem;
+                    font-size: $fontSize4;
                     line-height: 1;
                     font-weight: 300;
                     letter-spacing: -.04em;  
                 }
 
                 &__author {
-                    font-size: 1rem;
+                    font-size: $fontSize6;
                 }
             }
 
@@ -251,7 +251,6 @@ const startCarousel = () => {
 
     &__caroussel {
         display: flex;
-        // column-gap: 4rem;
         &__box {
             column-gap: 4rem;
             display: flex;
