@@ -97,10 +97,15 @@ const next = () => {
     if (gsap.isTweening(newsContainerRef.value)) return;
 
     const boxWidth = newsContainerRef.value.querySelector('.sectionNews__content__box').offsetWidth;
-    const gap = 40;
+    let gap = 40;
+    if (window.innerWidth < 650) {
+        gap = 16;
+        nbScrolls = 0;
+    }
     
     if (nbScrolls == 5){
         const boxWidth2 = boxWidth - (window.innerWidth - 2 * boxWidth - gap * 3);
+        console.log(boxWidth);
         gsap.to(newsContainerRef.value, {
             x: `-=${boxWidth2 + gap}`,
             duration: duration,
@@ -128,6 +133,9 @@ const prev = () => {
     if (gsap.isTweening(newsContainerRef.value)) return;
     const boxWidth = newsContainerRef.value.querySelector('.sectionNews__content__box').offsetWidth;
     const gap = 40;
+    if (window.innerWidth < 650) {
+        gap = 16;
+    }
     if (nbScrolls == 6){
         const boxWidth2 = boxWidth - (window.innerWidth - 2 * boxWidth - gap * 3);
         gsap.to(newsContainerRef.value, {
@@ -200,6 +208,7 @@ const prev = () => {
                 </div>
         </div>
     </div>
+    <div class="newsLabel">Read Article</div>
 </section>
 </template>
 

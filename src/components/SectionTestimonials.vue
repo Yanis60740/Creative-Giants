@@ -36,7 +36,10 @@ const ease = "power1.inOut";
 const next = () => {
     if (gsap.isTweening(testimonialsContainerRef.value)) return;
     const boxWidth = testimonialsContainerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
-    const gap = 40;
+    let gap = 40;
+    if (window.innerWidth < 650) {
+        gap = 16;
+    } 
 
     if (nbScrolls == nbItems - 1){
         const boxWidth2 = boxWidth - (window.innerWidth - boxWidth - gap * 2);
@@ -66,7 +69,10 @@ const next = () => {
 const prev = () => {
     if (gsap.isTweening(testimonialsContainerRef.value)) return;
     const boxWidth = testimonialsContainerRef.value.querySelector('.sectionTestimonials__content__box').offsetWidth;
-    const gap = 40;
+    let gap = 40;
+    if (window.innerWidth < 650) {
+        gap = 16;
+    } 
 
     if (nbScrolls == nbItems){
         const boxWidth2 = boxWidth - (window.innerWidth - boxWidth - gap * 2);
