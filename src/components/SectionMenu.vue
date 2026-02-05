@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, onMounted } from "vue";
+import { ref, watch, nextTick } from "vue";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -13,80 +13,71 @@ const toggleScroll = (isOpen) => {
 };
 
 const sectionMenu = ref(null);
-const menuText = ref(null);
-const closeText = ref(null);
+const props = defineProps({
+  menuTarget: Object,
+  closeTarget: Object
+});
 let tlStart;
 let tlReverse;
+let isOpen = false;
 
-onMounted(() => {
+const initTimelines = () => {
+  if (!sectionMenu.value || !props.menuTarget || !props.closeTarget) return;
+
   tlStart = gsap.timeline({
     paused: true,
     onStart: () => toggleScroll(true),
   });
+
   tlStart
     .to(sectionMenu.value, {
-      top: "0vh",
+      yPercent: 100, // Ajuste à 0 ou 100 selon ton CSS actuel
       duration: 0.9,
       ease: "power2.inOut",
     })
-    .to(
-      menuText.value,
-      {
-        yPercent: -100,
-        duration: 0.5,
-        ease: "power2.inOut",
-      },
-      "<",
-    )
-    .to(
-      closeText.value,
-      {
-        yPercent: -100,
-        duration: 0.5,
-        ease: "power2.inOut",
-      },
-      "<0.1",
-    );
+    .to(props.menuTarget, {
+      yPercent: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    }, "<")
+    .to(props.closeTarget, {
+      yPercent: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    }, "<0.1");
+
   tlReverse = gsap.timeline({
     paused: true,
     onStart: () => toggleScroll(false),
   });
+
   tlReverse
     .to(sectionMenu.value, {
-      top: "-100vh",
+      yPercent: 0,
       duration: 0.9,
       ease: "power2.inOut",
     })
-    .to(
-      menuText.value,
-      {
-        yPercent: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-      },
-      "<",
-    )
-    .to(
-      closeText.value,
-      {
-        yPercent: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-      },
-      "<",
-    );
-});
+    .to(props.menuTarget, { yPercent: 0, duration: 0.5, ease: "power2.inOut" }, "<")
+    .to(props.closeTarget, { yPercent: 0, duration: 0.5, ease: "power2.inOut" }, "<");
+};
 
-let isOpen = false;
+// On surveille les props : dès qu'elles sont reçues, on initialise
+watch(() => [props.menuTarget, props.closeTarget], async (newValues) => {
+  if (newValues[0] && newValues[1]) {
+    await nextTick(); // On attend que Vue finisse de rendre
+    initTimelines();
+  }
+}, { immediate: true });
+
 const onClickMenu = () => {
+  if (!tlStart || !tlReverse) return; // Sécurité si les timelines ne sont pas prêtes
+
   if (!isOpen) {
     isOpen = true;
     tlStart.restart();
-    return;
   } else {
     isOpen = false;
     tlReverse.restart();
-    return;
   }
 };
 
@@ -141,15 +132,13 @@ const unHover = (e) => {
     ease: "power3.inOut",
   });
 };
+
+defineExpose({
+  onClickMenu
+});
 </script>
 
 <template>
-  <button class="button is-clickable" @click="onClickMenu">
-    <div ref="buttonText" class="button__text">
-      <span ref="menuText" class="animButton">Menu</span>
-      <span ref="closeText" class="animButton">Close</span>
-    </div>
-  </button>
   <section ref="sectionMenu" class="sectionMenu">
     <div class="sectionMenu__box">
       <div class="sectionMenu__box__top">
@@ -199,34 +188,10 @@ const unHover = (e) => {
 
 <style scoped lang="scss">
 @import "../css/global.scss";
-.button {
-  z-index: 20;
-  background-color: black;
-  pointer-events: auto;
-  color: white;
-  border-radius: 100vw;
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  box-shadow: 0 0 0 1px #fff3;
-  border: 0;
-  &__text {
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    height: 2em;
-    display: flex;
-    overflow: hidden;
-    line-height: 28px;
-    .animButton {
-      font-family: $font;
-      font-weight: 300;
-      font-size: $fontSize5;
-    }
-  }
-}
+
 .sectionMenu {
   position: fixed;
-  top: -100vh;
+  transform: translateY(-100%);
   bottom: 0;
   width: 100%;
   height: 100vh;

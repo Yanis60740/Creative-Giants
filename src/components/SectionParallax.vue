@@ -452,7 +452,7 @@ onMounted(() => {
       }
 
       &__line {
-        z-index: 40;
+        z-index: 19;
         mix-blend-mode: difference;
         background-image: linear-gradient(#fff0, #fff3 20% 80%, #fff0);
         width: 1px;
@@ -502,7 +502,7 @@ onMounted(() => {
             font-family: $font;
             font-weight: 300;
             font-size: $fontSize2;
-            line-height: 1.1;
+            line-height: 1.2;
             letter-spacing: -0.04rem;
             display: flex;
             flex-direction: column;

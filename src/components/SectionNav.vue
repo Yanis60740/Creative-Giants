@@ -1,50 +1,62 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, onMounted } from "vue";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SectionMenu from "./SectionMenu.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default {
-  name: "SectionNav",
-  components: {
-    SectionMenu,
-  },
+const menuComp = ref(null);
+const navRoot = ref(null);
 
-  mounted() {
-    const letters = this.$el.querySelectorAll(".letter");
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".sectionNav",
-          start: "top+=150",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            this.$el
-              .querySelector(".sectionNav__box__logo__text")
-              ?.classList.remove("is-clickable");
-          },
-          onLeaveBack: () => {
-            this.$el
-              .querySelector(".sectionNav__box__logo__text")
-              ?.classList.add("is-clickable");
-          },
-        },
-      })
-      .to(letters, {
-        x: -25,
-        duration: 0.8,
-        ease: "power2.inOut",
-      });
-  },
+const menuTextRef = ref(null);
+const closeTextRef = ref(null);
+
+const handleNavMenuClick = () => {
+  menuComp.value?.onClickMenu();
 };
+
+const refresh = () => {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+  window.location.reload();
+};
+
+onMounted(() => {
+  const letters = navRoot.value.querySelectorAll(".letter");
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sectionNav",
+      start: "top+=150",
+      toggleActions: "play none none reverse",
+      onEnter: () => {
+        navRoot.value.querySelector(".sectionNav__box__logo__text")?.classList.remove("is-clickable");
+      },
+      onLeaveBack: () => {
+        navRoot.value.querySelector(".sectionNav__box__logo__text")?.classList.add("is-clickable");
+      },
+    },
+  })
+  .to(letters, {
+    x: -25,
+    duration: 0.8,
+    ease: "power2.inOut",
+  });
+});
 </script>
 
 <template>
-  <section class="sectionNav">
+  <section ref="navRoot" class="sectionNav">
+    <SectionMenu 
+      ref="menuComp" 
+      :menu-target="menuTextRef" 
+      :close-target="closeTextRef"
+    />
     <div class="sectionNav__box">
       <div class="sectionNav__box__logo">
-        <div class="sectionNav__box__logo__icon">
+        <div class="sectionNav__box__logo__icon" @click="refresh">
           <div class="sectionNav__box__logo__icon__svg is-clickable">
             <svg
               width="100%"
@@ -115,7 +127,12 @@ export default {
           <div class="letterWrapper"><div class="letter">s</div></div>
         </div>
       </div>
-      <SectionMenu />
+      <button class="button is-clickable" @click="handleNavMenuClick">
+        <div ref="buttonText" class="button__text">
+          <span ref="menuTextRef" class="animButton">Menu</span>
+          <span ref="closeTextRef" class="animButton">Close</span>
+        </div>
+      </button>
     </div>
   </section>
 </template>
@@ -179,6 +196,31 @@ export default {
           }
         }
       }
+    }
+  }
+}
+.button {
+  z-index: 20;
+  background-color: black;
+  pointer-events: auto;
+  color: white;
+  border-radius: 100vw;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  box-shadow: 0 0 0 1px #fff3;
+  border: 0;
+  &__text {
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 2em;
+    display: flex;
+    overflow: hidden;
+    line-height: 28px;
+    .animButton {
+      font-family: $font;
+      font-weight: 300;
+      font-size: $fontSize5;
     }
   }
 }

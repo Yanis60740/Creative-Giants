@@ -1,6 +1,7 @@
 <script setup>
 import SectionLoading from "./components/SectionLoading.vue";
 import SectionNav from "./components/SectionNav.vue";
+import SectionMenu from "./components/SectionMenu.vue";
 import SectionHero from "./components/SectionHero.vue";
 import SectionWhat from "./components/SectionWhat.vue";
 import SectionProject from "./components/SectionProject.vue";
@@ -15,6 +16,7 @@ import CustomCursor from "./components/CustomCursor.vue";
 <template>
   <SectionLoading />
   <SectionNav />
+  <SectionMenu />
   <SectionHero />
   <SectionWhat />
   <SectionProject />
@@ -171,7 +173,7 @@ import CustomCursor from "./components/CustomCursor.vue";
   }
   .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
     width: 100% !important;
-    height: 46rem !important;
+    height: 30rem !important;
   }
   .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
     width: max-content !important;
@@ -181,7 +183,7 @@ import CustomCursor from "./components/CustomCursor.vue";
     flex-direction: row !important;
   }
   .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__text {
-    width: 65% !important;
+    width: 100% !important;
   }
   .sectionProject__container__progressWrapper {
     display: none !important;
@@ -189,7 +191,6 @@ import CustomCursor from "./components/CustomCursor.vue";
   /* Parallax */
   .sectionParallax__wrapper__boxTitle__sticky__wrapper__title {
     font-size: 4rem !important;
-    line-height: 1.2 !important;
   }
   /* Testimonials */
   .sectionTestimonials__content__box {
@@ -249,6 +250,10 @@ import CustomCursor from "./components/CustomCursor.vue";
   }
   .sectionFooter__box__top__right__legal__text {
     font-size: 0.9rem !important;
+  }
+  /* Cursor */
+  #cursor {
+    display: none !important;
   }
 }
 
@@ -352,6 +357,9 @@ import CustomCursor from "./components/CustomCursor.vue";
   .sectionProject__container__itemWrapper__item__leftBox__title__text {
     font-size: 2.5rem !important;
   }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
+        height: 25rem !important;
+    }
   /* Parallax */
   .sectionParallax__wrapper{
     padding-left: 1rem !important;
@@ -444,6 +452,149 @@ import CustomCursor from "./components/CustomCursor.vue";
     .sectionFooter__box__top__right{
       padding-top: 1rem !important;
       padding-left: 0rem !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+  /* Menu */
+  .sectionMenu__box {
+        padding-top: 5rem !important;
+        padding-bottom: 1rem !important;
+    }
+  .sectionMenu__box__top__list__item {
+        font-size: 2rem !important;
+    }
+    .menuDetails {
+        font-size: 0.7rem !important;
+            line-height: 0.8rem !important;
+    }
+  /* What */
+      .sectionWhat {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+        row-gap: 2em !important;
+    }
+        .sectionWhat__top__box {
+        font-size: 0.8rem !important;
+    }
+        .sectionWhat__top__text {
+        font-size: 1rem !important;
+    }
+        .sectionWhat__bottom {
+        align-items: normal !important;
+    }
+    .sectionWhat__bottom__box {
+            row-gap: 2rem !important;
+    }
+    .sectionWhat__bottom__box__stats{
+      flex-direction: column !important;
+      row-gap: 1rem !important;
+    }
+    /* Project */
+        .sectionProject {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__leftBox__label__text{
+      font-size: 0.8rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__leftBox__title__text {
+        font-size: 2rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
+        gap: 0.3rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
+        height: 20rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
+        font-size: 0.8rem !important;
+    }
+    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
+        flex-direction: column !important;
+    }
+    /* Parallax */
+    .sectionParallax__wrapper__boxTitle__sticky__wrapper__subtitle{
+      font-size: 0.8rem !important;
+    }
+    .sectionParallax__wrapper__boxTitle__sticky__wrapper__title {
+        font-size: 2.5rem !important;
+    }
+    /* Testimonials */
+    .sectionTestimonials__header__title{
+          font-size: 0.8rem !important;
+    }
+
+    .sectionTestimonials__content__box {
+        padding: 1rem !important;
+    }
+        .sectionTestimonials__content__box__text {
+        grid-row-gap: 0rem !important;
+    }
+        .sectionTestimonials__content__box__text__quote {
+        font-size: 1rem !important;
+    }
+    .sectionTestimonials__content__box__text__author {
+        font-size: 0.8rem !important;
+    }
+    .sectionTestimonials__content__box__svg {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+    /* News */
+    .sectionNews{
+          grid-row-gap: 2rem !important;
+    }
+    .sectionNews__header{
+      grid-row-gap: 1rem !important;
+    }
+    .sectionNews__header__sectionTitle__wrapper{
+          font-size: 0.8rem !important;
+    }
+        .sectionNews__header__boxTitle__title {
+        font-size: 2rem !important;
+    }
+    .sectionNews__content__box__text__title{
+      font-size: 1rem !important;
+    }
+    .sectionNews__content__box__text__quote {
+        font-size: 0.8rem !important;
+    }
+    /* Contact */
+    .sectionContact {
+        padding-bottom: 3rem !important;
+    }
+    .sectionContact__box {
+        row-gap: 2rem !important;
+    }
+    .sectionContact__box__left__sectionTitle{
+      font-size: 0.8rem !important;
+    }
+    .sectionContact__box__left__title {
+        font-size: 2rem !important;
+    }
+    .sectionContact__box__left__text{
+      font-size: 0.8rem !important;
+    }
+    .sectionContact__box__right{
+      row-gap: 1rem !important;
+    }
+    .formGroup input{
+      min-height: 2rem !important;
+    }
+    .formGroup label{
+      margin-bottom: 0 !important;
+    }
+    .formGroup input::placeholder{
+      font-size: 1rem !important;
+    }
+    .sectionContact__box__right__names{
+      flex-direction: column !important;
+      row-gap: 1rem !important;
+    }
+    .sectionContact__box__right__emailPhone{
+      flex-direction: column !important;
+      row-gap: 1rem !important;
     }
 }
 </style>

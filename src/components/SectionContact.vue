@@ -97,7 +97,7 @@ onMounted(() => {
             />
           </div>
         </div>
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn is-clickable">
           <div class="bgAnim"></div>
           <p>Send enquiry</p>
           <div class="submit-btn__wrapper">

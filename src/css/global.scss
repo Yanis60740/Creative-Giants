@@ -6,6 +6,11 @@
   box-sizing: border-box;
   cursor: none;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
 body {
   -ms-overflow-style: none;
   overflow-x: hidden;
