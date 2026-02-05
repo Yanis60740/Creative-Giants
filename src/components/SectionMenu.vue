@@ -15,7 +15,7 @@ const toggleScroll = (isOpen) => {
 const sectionMenu = ref(null);
 const props = defineProps({
   menuTarget: Object,
-  closeTarget: Object
+  closeTarget: Object,
 });
 let tlStart;
 let tlReverse;
@@ -31,20 +31,28 @@ const initTimelines = () => {
 
   tlStart
     .to(sectionMenu.value, {
-      yPercent: 100, // Ajuste à 0 ou 100 selon ton CSS actuel
+      yPercent: 100,
       duration: 0.9,
       ease: "power2.inOut",
     })
-    .to(props.menuTarget, {
-      yPercent: -100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    }, "<")
-    .to(props.closeTarget, {
-      yPercent: -100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    }, "<0.1");
+    .to(
+      props.menuTarget,
+      {
+        yPercent: -100,
+        duration: 0.5,
+        ease: "power2.inOut",
+      },
+      "<",
+    )
+    .to(
+      props.closeTarget,
+      {
+        yPercent: -100,
+        duration: 0.5,
+        ease: "power2.inOut",
+      },
+      "<0.1",
+    );
 
   tlReverse = gsap.timeline({
     paused: true,
@@ -57,20 +65,31 @@ const initTimelines = () => {
       duration: 0.9,
       ease: "power2.inOut",
     })
-    .to(props.menuTarget, { yPercent: 0, duration: 0.5, ease: "power2.inOut" }, "<")
-    .to(props.closeTarget, { yPercent: 0, duration: 0.5, ease: "power2.inOut" }, "<");
+    .to(
+      props.menuTarget,
+      { yPercent: 0, duration: 0.5, ease: "power2.inOut" },
+      "<",
+    )
+    .to(
+      props.closeTarget,
+      { yPercent: 0, duration: 0.5, ease: "power2.inOut" },
+      "<",
+    );
 };
 
-// On surveille les props : dès qu'elles sont reçues, on initialise
-watch(() => [props.menuTarget, props.closeTarget], async (newValues) => {
-  if (newValues[0] && newValues[1]) {
-    await nextTick(); // On attend que Vue finisse de rendre
-    initTimelines();
-  }
-}, { immediate: true });
+watch(
+  () => [props.menuTarget, props.closeTarget],
+  async (newValues) => {
+    if (newValues[0] && newValues[1]) {
+      await nextTick();
+      initTimelines();
+    }
+  },
+  { immediate: true },
+);
 
 const onClickMenu = () => {
-  if (!tlStart || !tlReverse) return; // Sécurité si les timelines ne sont pas prêtes
+  if (!tlStart || !tlReverse) return;
 
   if (!isOpen) {
     isOpen = true;
@@ -134,7 +153,7 @@ const unHover = (e) => {
 };
 
 defineExpose({
-  onClickMenu
+  onClickMenu,
 });
 </script>
 
@@ -202,10 +221,9 @@ defineExpose({
     width: 100%;
     height: 100%;
     grid-column-gap: 0.75rem;
-    // grid-template-columns: 1fr 2fr 1fr;
-        display: flex;
-        flex-direction: column;
-            justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-sizing: border-box;
     padding: 8rem 2.5rem 2rem 2.5rem;
     font-family: $font;
@@ -218,11 +236,10 @@ defineExpose({
       align-items: center;
     }
     &__bottom {
-
       &__box {
-            display: flex;
-    justify-content: space-between;
-    width: 100%;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
       }
     }
     &__top {

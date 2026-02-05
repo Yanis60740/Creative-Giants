@@ -294,7 +294,7 @@ import CustomCursor from "./components/CustomCursor.vue";
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-/* Nav */
+  /* Nav */
   .sectionNav__box {
     padding-right: 1rem !important;
   }
@@ -304,12 +304,12 @@ import CustomCursor from "./components/CustomCursor.vue";
   .sectionNav__box__logo__text {
     display: none !important;
   }
-/* Hero */
+  /* Hero */
   .sectionHero__subtitle__textWrapper__text {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-/* Menu */
+  /* Menu */
   .sectionMenu__box {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
@@ -342,66 +342,69 @@ import CustomCursor from "./components/CustomCursor.vue";
     font-size: 0.8rem !important;
   }
   /* Project */
-  .sectionProject{
+  .sectionProject {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  .sectionProject__container__itemWrapper__item{
+  .sectionProject__container__itemWrapper__item {
     row-gap: 1rem !important;
   }
-  .sectionProject__container__itemWrapper__item__leftBox{
-        row-gap: 1rem !important;
+  .sectionProject__container__itemWrapper__item__leftBox {
+    row-gap: 1rem !important;
   }
   .sectionProject__container__itemWrapper__item__leftBox__title__text {
     font-size: 2.5rem !important;
   }
   .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
-        height: 25rem !important;
-    }
+    height: 25rem !important;
+  }
   /* Parallax */
-  .sectionParallax__wrapper{
+  .sectionParallax__wrapper {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  .sectionParallax__wrapper__boxContent{
+  .sectionParallax__wrapper__boxContent {
     grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr !important;
   }
-  .sectionParallax__wrapper__boxContent :nth-child(5), .sectionParallax__wrapper__boxContent :nth-child(6), .sectionParallax__wrapper__boxContent :nth-child(7), .sectionParallax__wrapper__boxContent :nth-child(8) {
+  .sectionParallax__wrapper__boxContent :nth-child(5),
+  .sectionParallax__wrapper__boxContent :nth-child(6),
+  .sectionParallax__wrapper__boxContent :nth-child(7),
+  .sectionParallax__wrapper__boxContent :nth-child(8) {
     display: none !important;
   }
   /* Testimonials */
-  .sectionTestimonials{
+  .sectionTestimonials {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  .sliderButton{
-        width: 2rem !important;
+  .sliderButton {
+    width: 2rem !important;
     height: 2rem !important;
   }
-  .sectionTestimonials__content{
+  .sectionTestimonials__content {
     column-gap: 1rem !important;
   }
-  .sectionTestimonials__content__box{
+  .sectionTestimonials__content__box {
     padding: 2rem !important;
     grid-column-gap: 1rem !important;
   }
   .sectionTestimonials__content__box__text__quote {
-        font-size: 1.3rem !important;
-    }
-    .sectionTestimonials__content__box__svg {
-        width: 2.5rem !important;
-        height: 2.5rem !important;
-    }
-    .sectionTestimonials__caroussel__box{
-      column-gap: 2rem !important;
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-    .sectionTestimonials__caroussel__box__item img{
-      height: 3.5rem !important;
-    }
+    font-size: 1.3rem !important;
+  }
+  .sectionTestimonials__content__box__svg {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  .sectionTestimonials__caroussel__box {
+    column-gap: 2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .sectionTestimonials__caroussel__box__item img {
+    height: 3.5rem !important;
+  }
   /* News */
-  .sectionNews{
+  .sectionNews {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     padding-top: 2rem !important;
@@ -410,195 +413,196 @@ import CustomCursor from "./components/CustomCursor.vue";
   .sectionNews__header__boxTitle__title {
     font-size: 2.5rem !important;
   }
-  .sectionNews__content{
+  .sectionNews__content {
     column-gap: 1rem !important;
   }
-  .sectionNews__content__box{
+  .sectionNews__content__box {
     width: 90% !important;
   }
   /* Contact */
-  .sectionContact{
+  .sectionContact {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
   .sectionContact__box__left__title {
-        font-size: 2.5rem !important;
-    }
-    .formGroup label {
-        font-size: 0.8rem !important;
-    }
-    .formGroup input::placeholder {
-        font-size: 1.5rem !important;
-    }
+    font-size: 2.5rem !important;
+  }
+  .formGroup label {
+    font-size: 0.8rem !important;
+  }
+  .formGroup input::placeholder {
+    font-size: 1.5rem !important;
+  }
   /* Footer */
-  .sectionFooter{
+  .sectionFooter {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  .sectionFooter__box__top{
+  .sectionFooter__box__top {
     display: flex !important;
     flex-direction: column !important;
   }
-      .sectionFooter__box__top__left__content__title p {
-        font-size: 0.9rem !important;
-    }
-    .sectionFooter__box__top__left{
-      row-gap: 1rem !important;
+  .sectionFooter__box__top__left__content__title p {
+    font-size: 0.9rem !important;
+  }
+  .sectionFooter__box__top__left {
+    row-gap: 1rem !important;
     padding-bottom: 2rem !important;
-    }
-    .sectionFooter__box__top__middle__item{
-      padding-left: 1rem !important;
+  }
+  .sectionFooter__box__top__middle__item {
+    padding-left: 1rem !important;
     padding-right: 1rem !important;
-    }
-    .sectionFooter__box__top__middle__item__text {
-        font-size: 0.9rem !important;
-    }
-    .sectionFooter__box__top__right{
-      padding-top: 1rem !important;
-      padding-left: 0rem !important;
-    }
+  }
+  .sectionFooter__box__top__middle__item__text {
+    font-size: 0.9rem !important;
+  }
+  .sectionFooter__box__top__right {
+    padding-top: 1rem !important;
+    padding-left: 0rem !important;
+  }
 }
 
 @media screen and (max-width: 450px) {
   /* Menu */
   .sectionMenu__box {
-        padding-top: 30% !important;
-        padding-bottom: 1rem !important;
-    }
+    row-gap: 30% !important;
+    justify-content: flex-end !important;
+    padding-bottom: 1rem !important;
+  }
   .sectionMenu__box__top__list__item {
-        font-size: 2rem !important;
-    }
-    .menuDetails {
-        font-size: 0.7rem !important;
-            line-height: 0.8rem !important;
-    }
+    font-size: 2rem !important;
+  }
+  .menuDetails {
+    font-size: 0.7rem !important;
+    line-height: 0.8rem !important;
+  }
   /* What */
-      .sectionWhat {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-        row-gap: 2em !important;
-    }
-        .sectionWhat__top__box {
-        font-size: 0.8rem !important;
-    }
-        .sectionWhat__top__text {
-        font-size: 1rem !important;
-    }
-        .sectionWhat__bottom {
-        align-items: normal !important;
-    }
-    .sectionWhat__bottom__box {
-            row-gap: 2rem !important;
-    }
-    .sectionWhat__bottom__box__stats{
-      flex-direction: column !important;
-      row-gap: 1rem !important;
-    }
-    /* Project */
-        .sectionProject {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__leftBox__label__text{
-      font-size: 0.8rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__leftBox__title__text {
-        font-size: 2rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
-        gap: 0.3rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
-        height: 20rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
-        font-size: 0.8rem !important;
-    }
-    .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
-        flex-direction: column !important;
-    }
-    /* Parallax */
-    .sectionParallax__wrapper__boxTitle__sticky__wrapper__subtitle{
-      font-size: 0.8rem !important;
-    }
-    .sectionParallax__wrapper__boxTitle__sticky__wrapper__title {
-        font-size: 2.5rem !important;
-    }
-    /* Testimonials */
-    .sectionTestimonials__header__title{
-          font-size: 0.8rem !important;
-    }
+  .sectionWhat {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    row-gap: 2em !important;
+  }
+  .sectionWhat__top__box {
+    font-size: 0.8rem !important;
+  }
+  .sectionWhat__top__text {
+    font-size: 1rem !important;
+  }
+  .sectionWhat__bottom {
+    align-items: normal !important;
+  }
+  .sectionWhat__bottom__box {
+    row-gap: 2rem !important;
+  }
+  .sectionWhat__bottom__box__stats {
+    flex-direction: column !important;
+    row-gap: 1rem !important;
+  }
+  /* Project */
+  .sectionProject {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__leftBox__label__text {
+    font-size: 0.8rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__leftBox__title__text {
+    font-size: 2rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
+    gap: 0.3rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__img {
+    height: 20rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info {
+    font-size: 0.8rem !important;
+  }
+  .sectionProject__container__itemWrapper__item__rightBox__wrapper__info__production {
+    flex-direction: column !important;
+  }
+  /* Parallax */
+  .sectionParallax__wrapper__boxTitle__sticky__wrapper__subtitle {
+    font-size: 0.8rem !important;
+  }
+  .sectionParallax__wrapper__boxTitle__sticky__wrapper__title {
+    font-size: 2.5rem !important;
+  }
+  /* Testimonials */
+  .sectionTestimonials__header__title {
+    font-size: 0.8rem !important;
+  }
 
-    .sectionTestimonials__content__box {
-        padding: 1rem !important;
-    }
-        .sectionTestimonials__content__box__text {
-        grid-row-gap: 0rem !important;
-    }
-        .sectionTestimonials__content__box__text__quote {
-        font-size: 1rem !important;
-    }
-    .sectionTestimonials__content__box__text__author {
-        font-size: 0.8rem !important;
-    }
-    .sectionTestimonials__content__box__svg {
-        width: 2rem !important;
-        height: 2rem !important;
-    }
-    /* News */
-    .sectionNews{
-          grid-row-gap: 2rem !important;
-    }
-    .sectionNews__header{
-      grid-row-gap: 1rem !important;
-    }
-    .sectionNews__header__sectionTitle__wrapper{
-          font-size: 0.8rem !important;
-    }
-        .sectionNews__header__boxTitle__title {
-        font-size: 2rem !important;
-    }
-    .sectionNews__content__box__text__title{
-      font-size: 1rem !important;
-    }
-    .sectionNews__content__box__text__quote {
-        font-size: 0.8rem !important;
-    }
-    /* Contact */
-    .sectionContact {
-        padding-bottom: 3rem !important;
-    }
-    .sectionContact__box {
-        row-gap: 2rem !important;
-    }
-    .sectionContact__box__left__sectionTitle{
-      font-size: 0.8rem !important;
-    }
-    .sectionContact__box__left__title {
-        font-size: 2rem !important;
-    }
-    .sectionContact__box__left__text{
-      font-size: 0.8rem !important;
-    }
-    .sectionContact__box__right{
-      row-gap: 1rem !important;
-    }
-    .formGroup input{
-      min-height: 2rem !important;
-    }
-    .formGroup label{
-      margin-bottom: 0 !important;
-    }
-    .formGroup input::placeholder{
-      font-size: 1rem !important;
-    }
-    .sectionContact__box__right__names{
-      flex-direction: column !important;
-      row-gap: 1rem !important;
-    }
-    .sectionContact__box__right__emailPhone{
-      flex-direction: column !important;
-      row-gap: 1rem !important;
-    }
+  .sectionTestimonials__content__box {
+    padding: 1rem !important;
+  }
+  .sectionTestimonials__content__box__text {
+    grid-row-gap: 0rem !important;
+  }
+  .sectionTestimonials__content__box__text__quote {
+    font-size: 1rem !important;
+  }
+  .sectionTestimonials__content__box__text__author {
+    font-size: 0.8rem !important;
+  }
+  .sectionTestimonials__content__box__svg {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  /* News */
+  .sectionNews {
+    grid-row-gap: 2rem !important;
+  }
+  .sectionNews__header {
+    grid-row-gap: 1rem !important;
+  }
+  .sectionNews__header__sectionTitle__wrapper {
+    font-size: 0.8rem !important;
+  }
+  .sectionNews__header__boxTitle__title {
+    font-size: 2rem !important;
+  }
+  .sectionNews__content__box__text__title {
+    font-size: 1rem !important;
+  }
+  .sectionNews__content__box__text__quote {
+    font-size: 0.8rem !important;
+  }
+  /* Contact */
+  .sectionContact {
+    padding-bottom: 3rem !important;
+  }
+  .sectionContact__box {
+    row-gap: 2rem !important;
+  }
+  .sectionContact__box__left__sectionTitle {
+    font-size: 0.8rem !important;
+  }
+  .sectionContact__box__left__title {
+    font-size: 2rem !important;
+  }
+  .sectionContact__box__left__text {
+    font-size: 0.8rem !important;
+  }
+  .sectionContact__box__right {
+    row-gap: 1rem !important;
+  }
+  .formGroup input {
+    min-height: 2rem !important;
+  }
+  .formGroup label {
+    margin-bottom: 0 !important;
+  }
+  .formGroup input::placeholder {
+    font-size: 1rem !important;
+  }
+  .sectionContact__box__right__names {
+    flex-direction: column !important;
+    row-gap: 1rem !important;
+  }
+  .sectionContact__box__right__emailPhone {
+    flex-direction: column !important;
+    row-gap: 1rem !important;
+  }
 }
 </style>

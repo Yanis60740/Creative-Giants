@@ -14,7 +14,7 @@ onMounted(() => {
     defaults: { duration: 0.6, ease: "power4.inOut" },
   });
 
-  tl.fromTo(fill, { yPercent: 101 }, { yPercent: 0})
+  tl.fromTo(fill, { yPercent: 101 }, { yPercent: 0 })
     .to(text, { color: "black" }, 0)
     .to(circle, { backgroundColor: "black" }, 0)
     .to(arrow, { fill: "#ffd001" }, 0);
@@ -153,7 +153,7 @@ onMounted(() => {
         text-transform: uppercase;
         font-weight: 400;
       }
-
+      
       &__title {
         font-family: $font;
         font-size: $fontSize2;

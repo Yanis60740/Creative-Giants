@@ -26,24 +26,29 @@ const refresh = () => {
 
 onMounted(() => {
   const letters = navRoot.value.querySelectorAll(".letter");
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sectionNav",
-      start: "top+=150",
-      toggleActions: "play none none reverse",
-      onEnter: () => {
-        navRoot.value.querySelector(".sectionNav__box__logo__text")?.classList.remove("is-clickable");
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sectionNav",
+        start: "top+=150",
+        toggleActions: "play none none reverse",
+        onEnter: () => {
+          navRoot.value
+            .querySelector(".sectionNav__box__logo__text")
+            ?.classList.remove("is-clickable");
+        },
+        onLeaveBack: () => {
+          navRoot.value
+            .querySelector(".sectionNav__box__logo__text")
+            ?.classList.add("is-clickable");
+        },
       },
-      onLeaveBack: () => {
-        navRoot.value.querySelector(".sectionNav__box__logo__text")?.classList.add("is-clickable");
-      },
-    },
-  })
-  .to(letters, {
-    x: -25,
-    duration: 0.8,
-    ease: "power2.inOut",
-  });
+    })
+    .to(letters, {
+      x: -25,
+      duration: 0.8,
+      ease: "power2.inOut",
+    });
 });
 </script>
 
@@ -129,9 +134,9 @@ onMounted(() => {
         </div>
       </button>
     </div>
-    <SectionMenu 
-      ref="menuComp" 
-      :menu-target="menuTextRef" 
+    <SectionMenu
+      ref="menuComp"
+      :menu-target="menuTextRef"
       :close-target="closeTextRef"
     />
   </section>

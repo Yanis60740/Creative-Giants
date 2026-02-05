@@ -131,7 +131,7 @@ const duration = 0.5;
 const ease = "power1.inOut";
 let gap = 40;
 let firstScroll = 1;
-let boxsInViewport = 2
+let boxsInViewport = 2;
 if (window.innerWidth < 650) {
   gap = 16;
   nbScrolls = 0;
@@ -141,14 +141,18 @@ if (window.innerWidth < 650) {
 
 const next = () => {
   if (gsap.isTweening(newsContainerRef.value)) return;
-console.log("next", "nbScrolls:", nbScrolls, );
+  console.log("next", "nbScrolls:", nbScrolls);
   const boxWidth = newsContainerRef.value.querySelector(
     ".sectionNews__content__box",
   ).offsetWidth;
 
   if (nbScrolls == 5) {
-    const boxWidth2 = boxWidth - (window.innerWidth - boxsInViewport * boxWidth - gap * (boxsInViewport + 1));
-    gsap.to(newsContainerRef.value, { 
+    const boxWidth2 =
+      boxWidth -
+      (window.innerWidth -
+        boxsInViewport * boxWidth -
+        gap * (boxsInViewport + 1));
+    gsap.to(newsContainerRef.value, {
       x: `-=${boxWidth2 + gap}`,
       duration: duration,
       ease: ease,
@@ -171,13 +175,17 @@ console.log("next", "nbScrolls:", nbScrolls, );
 };
 
 const prev = () => {
-    console.log("prev", "nbScrolls:", nbScrolls, "firstScroll:", firstScroll);
+  console.log("prev", "nbScrolls:", nbScrolls, "firstScroll:", firstScroll);
   if (gsap.isTweening(newsContainerRef.value)) return;
   const boxWidth = newsContainerRef.value.querySelector(
     ".sectionNews__content__box",
   ).offsetWidth;
   if (nbScrolls == 6) {
-    const boxWidth2 = boxWidth - (window.innerWidth - boxsInViewport * boxWidth - gap * (boxsInViewport + 1));
+    const boxWidth2 =
+      boxWidth -
+      (window.innerWidth -
+        boxsInViewport * boxWidth -
+        gap * (boxsInViewport + 1));
     gsap.to(newsContainerRef.value, {
       x: `+=${boxWidth2 + gap}`,
       duration: duration,
