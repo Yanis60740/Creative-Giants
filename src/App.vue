@@ -1,7 +1,6 @@
 <script setup>
 import SectionLoading from "./components/SectionLoading.vue";
 import SectionNav from "./components/SectionNav.vue";
-import SectionMenu from "./components/SectionMenu.vue";
 import SectionHero from "./components/SectionHero.vue";
 import SectionWhat from "./components/SectionWhat.vue";
 import SectionProject from "./components/SectionProject.vue";
@@ -16,7 +15,6 @@ import CustomCursor from "./components/CustomCursor.vue";
 <template>
   <SectionLoading />
   <SectionNav />
-  <SectionMenu />
   <SectionHero />
   <SectionWhat />
   <SectionProject />
@@ -365,6 +363,12 @@ import CustomCursor from "./components/CustomCursor.vue";
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
+  .sectionParallax__wrapper__boxContent{
+    grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr !important;
+  }
+  .sectionParallax__wrapper__boxContent :nth-child(5), .sectionParallax__wrapper__boxContent :nth-child(6), .sectionParallax__wrapper__boxContent :nth-child(7), .sectionParallax__wrapper__boxContent :nth-child(8) {
+    display: none !important;
+  }
   /* Testimonials */
   .sectionTestimonials{
     padding-left: 1rem !important;
@@ -458,7 +462,7 @@ import CustomCursor from "./components/CustomCursor.vue";
 @media screen and (max-width: 450px) {
   /* Menu */
   .sectionMenu__box {
-        padding-top: 5rem !important;
+        padding-top: 30% !important;
         padding-bottom: 1rem !important;
     }
   .sectionMenu__box__top__list__item {
