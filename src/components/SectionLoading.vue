@@ -5,7 +5,14 @@ import gsap from "gsap";
 const box = ref(null);
 const loadingBanner = ref(null);
 const svgBox = ref(null);
-
+let height = "70vh";
+if (window.innerHeight < 650) {
+  height = "35vh";
+} else if (window.innerHeight < 1000) {
+  height = "40vh";
+} else if (window.innerHeight < 1200) {
+  height = "55vh";
+}
 onMounted(() => {
   const tl = gsap.timeline();
 
@@ -21,7 +28,7 @@ onMounted(() => {
     .to(
       loadingBanner.value,
       {
-        height: "70vh",
+        height: height,
         duration: 1.2,
         ease: "power3.out",
       },

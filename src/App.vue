@@ -30,9 +30,6 @@ import CustomCursor from "./components/CustomCursor.vue";
 @import "css/global.scss";
 
 @media screen and (max-width: 1200px) {
-  .sectionLoading__loadingBanner {
-    height: 55vh !important;
-  }
   .sectionWhat__top__text {
     font-size: 3.5rem !important;
   }
@@ -86,9 +83,6 @@ import CustomCursor from "./components/CustomCursor.vue";
 
 @media screen and (max-width: 1000px) {
   /* Loading */
-  .sectionLoading__loadingBanner {
-    height: 40vh !important;
-  }
   .sectionLoading__loadingBanner__svgBox {
     padding-bottom: 2rem !important;
   }
