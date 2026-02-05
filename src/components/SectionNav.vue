@@ -49,11 +49,6 @@ onMounted(() => {
 
 <template>
   <section ref="navRoot" class="sectionNav">
-    <SectionMenu 
-      ref="menuComp" 
-      :menu-target="menuTextRef" 
-      :close-target="closeTextRef"
-    />
     <div class="sectionNav__box">
       <div class="sectionNav__box__logo">
         <div class="sectionNav__box__logo__icon" @click="refresh">
@@ -134,6 +129,11 @@ onMounted(() => {
         </div>
       </button>
     </div>
+    <SectionMenu 
+      ref="menuComp" 
+      :menu-target="menuTextRef" 
+      :close-target="closeTextRef"
+    />
   </section>
 </template>
 
